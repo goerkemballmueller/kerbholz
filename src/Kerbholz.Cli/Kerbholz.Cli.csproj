@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Kerbholz.Cli</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>kerbholz</ToolCommandName>
+    <Description>Command line and commit-msg hook for Kerbholz: checks a commit message against Conventional Commits.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kerbholz\Kerbholz.csproj" />
+  </ItemGroup>
+
+</Project>

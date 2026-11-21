@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Kerbholz/Kerbholz.csproj" />
+    <Project Path="src/Kerbholz.Cli/Kerbholz.Cli.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Kerbholz.Tests/Kerbholz.Tests.csproj" />

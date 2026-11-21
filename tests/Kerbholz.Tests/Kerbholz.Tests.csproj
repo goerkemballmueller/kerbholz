@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Kerbholz\Kerbholz.csproj" />
+    <ProjectReference Include="..\..\src\Kerbholz.Cli\Kerbholz.Cli.csproj" />
   </ItemGroup>
 
 </Project>
