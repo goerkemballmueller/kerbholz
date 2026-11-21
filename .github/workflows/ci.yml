@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the commit check below walks the pull request's commits
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - run: dotnet restore Kerbholz.slnx
+      - run: dotnet build Kerbholz.slnx -c Release --no-restore
+      - run: dotnet test Kerbholz.slnx -c Release --no-build
+
+      - name: Check the pull request's commit messages with kerbholz itself
+        if: github.event_name == 'pull_request'
+        env:
+          # Passed through the environment, never pasted into the script: values from the event are data, not shell code.
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          for sha in $(git rev-list --no-merges "$BASE..$HEAD"); do
+            echo "commit $sha"
+            git log -1 --format=%B "$sha" | dotnet run --project src/Kerbholz.Cli -c Release --no-build -- -
+          done
