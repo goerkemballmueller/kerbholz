@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Kerbholz</RootNamespace>
+    <Description>Parses and checks commit messages against the Conventional Commits 1.0.0 specification.</Description>
+  </PropertyGroup>
+
+</Project>
